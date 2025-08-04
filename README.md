@@ -22,7 +22,6 @@ All this information is added manually in the backend (MySQL database) and is sh
 
 - login.html – Page where the user logs in  
 - dashboard.html – Page that shows user info  
-- db.php – Connects to the MySQL database  
 - data.php – Gets data from the database  
 - internship.sql – Database file with table and data  
 
