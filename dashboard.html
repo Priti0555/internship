@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fefcf9;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 1px solid #a67c52;
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      color: #5c3b1e;
+    }
+    p {
+      margin: 12px 0;
+      font-size: 16px;
+      color: #444;
+    }
+    span {
+      font-weight: bold;
+      color: #5c3b1e;
+    }
+    button {
+      background: #a67c52;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #8b5e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Intern Dashboard</h2>
+    <p>Welcome, <span id="user"></span></p>
+    <p>Referral Code: <span id="code"></span></p>
+    <p>Amount Raised: ₹<span id="amount"></span></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const username = localStorage.getItem("user");
+    if (!username) {
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("user").innerText = username;
+    }
+
+    fetch("data.php")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("code").innerText = data.referral_code;
+        document.getElementById("amount").innerText = data.amount_raised;
+      })
+      .catch(err => console.error("Error fetching data:", err));
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

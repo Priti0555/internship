@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fefcf9;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border: 1px solid #a67c52;
+      text-align: center;
+      width: 300px;
+    }
+    h2 {
+      color: #5c3b1e;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+    button {
+      background: #a67c52;
+      color: white;
+      border: none;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #8b5e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Intern Login</h2>
+    <input type="text" id="username" placeholder="Enter your name">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      const name = document.getElementById("username").value.trim();
+      if (!name) {
+        alert("Please enter your name.");
+      } else {
+        localStorage.setItem("user", name);
+        window.location.href = "dashboard.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
